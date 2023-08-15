@@ -4,7 +4,7 @@ class Solution:
         popidx = []
         ist = sorted(tuple(zip(indices, sources, targets)))
         for i in range(len(ist)):
-            if s[ist[i][0]: ist[i][0] + len(ist[i][1])] != ist[i][1]:
+            if not s.startswith(ist[i][1], ist[i][0]):
                 popidx.append(i)
         for idx in popidx[ : : -1]:
             ist.pop(idx)
