@@ -16,7 +16,7 @@ struct ListNode* reverseBetween(struct ListNode* head, int left, int right){
         leftEdge = leftEdge->next;
     }
 
-    struct ListNode* prevNode = malloc(sizeof(struct ListNode));
+    struct ListNode* prevNode = NULL;
     struct ListNode* currentNode = leftEdge->next;
 
     for (int i = 0; i < right - left + 1; i++){
