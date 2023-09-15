@@ -1,4 +1,5 @@
 from typing import *
+from itertools import *
 
 class Solution:
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
@@ -10,16 +11,11 @@ class Solution:
                 maxResLen += 1
             else:
                 break
-        if maxResLen == 0:
-            return []
-
-        i = maxResLen
-        while (i < len(candidates)):
-            if (candidates[i] == candidates[i-maxResLen]):
-                candidates.pop(i)
-            else:
-                i += 1
-
+        c = []
+        for num, l in groupby(candidates):
+            c += [num] * min(maxResLen, len(list(l)))
+        candidates = c
+        del c, maxResLen, r
         res = []
         def dfs(prev, target, left=0):
             l = candidates[left: ]
